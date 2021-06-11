@@ -42,11 +42,10 @@ public class directeur implements Serializable {
 		super();
 	}
 
-	public directeur(String nom, String prenom, Set<salarie> salaries) {
+	public directeur(String nom, String prenom) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
-		this.salaries = salaries;
 	}
 
 	public int getId() {

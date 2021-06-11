@@ -49,12 +49,11 @@ public class hotel implements Serializable {
 	}
 
 
-	public hotel(String nom, String adresse, int telephone, Set<chambre> chambres) {
+	public hotel(String nom, String adresse, int telephone) {
 		super();
 		this.nom = nom;
 		this.adresse = adresse;
 		this.telephone = telephone;
-		this.chambres = chambres;
 	}
 
 
@@ -106,5 +105,16 @@ public class hotel implements Serializable {
 	public void setChambres(Set<chambre> chambres) {
 		this.chambres = chambres;
 	}
+
+
+	public directeur getDirecteur() {
+		return directeur;
+	}
+
+
+	public void setDirecteur(directeur directeur) {
+		this.directeur = directeur;
+	}
+	
 	
 }

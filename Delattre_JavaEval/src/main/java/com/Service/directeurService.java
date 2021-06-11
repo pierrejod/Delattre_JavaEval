@@ -33,6 +33,7 @@ public class directeurService implements Serializable {
 	{
 		
 		directeur c = s.get(directeur.class, id);
+		c.setNom("paul");
 		s.update(c); // UPDATE directeur SET nom = c.getNom(), prenom= c.getPrenom() where id =id;
 
 	}
