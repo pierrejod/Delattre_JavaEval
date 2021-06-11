@@ -1,5 +1,5 @@
 package com.Model;
 
-public class Client {
+public class chambre {
 
 }
