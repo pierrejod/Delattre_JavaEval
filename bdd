@@ -1,0 +1,137 @@
+-- phpMyAdmin SQL Dump
+-- version 4.8.4
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  ven. 11 juin 2021 à 15:21
+-- Version du serveur :  5.7.24
+-- Version de PHP :  7.2.14
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de données :  `exam_java`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `chambre`
+--
+
+DROP TABLE IF EXISTS `chambre`;
+CREATE TABLE IF NOT EXISTS `chambre` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `num_chambre` int(11) NOT NULL,
+  `superficie` double NOT NULL,
+  `type` varchar(50) NOT NULL,
+  `etage` int(11) NOT NULL,
+  `hotel_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `hotel_id` (`hotel_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `chambre`
+--
+
+INSERT INTO `chambre` (`id`, `num_chambre`, `superficie`, `type`, `etage`, `hotel_id`) VALUES
+(1, 15, 14.4, 'Familial', 2, NULL),
+(2, 14, 16.8, 'Suite', 1, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `directeur`
+--
+
+DROP TABLE IF EXISTS `directeur`;
+CREATE TABLE IF NOT EXISTS `directeur` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(50) NOT NULL,
+  `prenom` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `directeur`
+--
+
+INSERT INTO `directeur` (`id`, `nom`, `prenom`) VALUES
+(1, 'Didier', 'Laporte'),
+(2, 'paul', 'Dupont'),
+(3, 'Didier', 'Laporte'),
+(4, 'Marc', 'Dupont'),
+(5, 'Didier', 'Laporte'),
+(6, 'Marc', 'Dupont'),
+(7, 'Didier', 'Laporte'),
+(8, 'Marc', 'Dupont');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `hotel`
+--
+
+DROP TABLE IF EXISTS `hotel`;
+CREATE TABLE IF NOT EXISTS `hotel` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(50) NOT NULL,
+  `adresse` varchar(150) NOT NULL,
+  `telephone` int(11) NOT NULL,
+  `directeur_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `directeur_id` (`directeur_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `hotel`
+--
+
+INSERT INTO `hotel` (`id`, `nom`, `adresse`, `telephone`, `directeur_id`) VALUES
+(1, 'Ibis', 'Rue Vendome', 1816, NULL),
+(2, 'Sofitel', 'Rue Marshall', 3318, 7);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `salarie`
+--
+
+DROP TABLE IF EXISTS `salarie`;
+CREATE TABLE IF NOT EXISTS `salarie` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(50) NOT NULL,
+  `prenom` varchar(50) NOT NULL,
+  `salaire` double NOT NULL,
+  `experience` int(11) NOT NULL,
+  `directeur_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `directeur_id` (`directeur_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `salarie`
+--
+
+INSERT INTO `salarie` (`id`, `nom`, `prenom`, `salaire`, `experience`, `directeur_id`) VALUES
+(1, 'Bench', 'Mark', 1423.6, 2, NULL),
+(2, 'Doe', 'John', 1300.5, 1, NULL),
+(3, 'Bench', 'Mark', 1423.6, 2, NULL),
+(4, 'Doe', 'John', 1300.5, 1, NULL),
+(5, 'Bench', 'Mark', 1423.6, 2, NULL),
+(6, 'Doe', 'John', 1300.5, 1, NULL);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
