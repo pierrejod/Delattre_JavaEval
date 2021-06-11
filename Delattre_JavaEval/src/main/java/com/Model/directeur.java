@@ -32,7 +32,7 @@ public class directeur implements Serializable {
 	private String prenom;
 	
 	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="client_id")
+	@JoinColumn(name="directeur_id")
 	private Set<salarie> salaries;
 	
 	@OneToOne(mappedBy="directeur")
